@@ -133,45 +133,35 @@ getElementId('card-box').addEventListener('click', function (e) {
         // this is for copy  the calling number by clicking in button icon
         const icon = e.target
         if (icon.tagName == "I") {
-            console.log('IIIIIII')
             const copyValue = Number(getElementId('copyValue').innerText);
             const currentValue = Number(copyValue + 1);
             getElementId('copyValue').innerText = currentValue;
-            const emergencyNumber = Number(e.target.parentNode.parentNode.parentNode.children[3].innerText);
+            const emergencyNumber = e.target.parentNode.parentNode.parentNode.children[3].innerText;
 
             navigator.clipboard.writeText(emergencyNumber)
                 .then(function () {
                     alert(`Copied : ${emergencyNumber}`)
                 })
-                .catch(function (err) {
-                    console.error('failed to copy', err)
+                .catch(function () {
+                    // console.error('failed to copy', err)
                 })
 
         } else {                                // this is for copy  the calling number by clicking in button
             const copyValue = Number(getElementId('copyValue').innerText);
             const currentValue = Number(copyValue + 1);
             getElementId('copyValue').innerText = currentValue;
-            // console.log(copyValue)
 
-            const emergencyNumber = Number(e.target.parentNode.parentNode.children[3].innerText);
+            const emergencyNumber = e.target.parentNode.parentNode.children[3].innerText;
 
             navigator.clipboard.writeText(emergencyNumber)
                 .then(function () {
                     alert(`Copied : ${emergencyNumber}`)
                 })
-                .catch(function (err) {
-                    console.error('failed to copy', err)
+                .catch(function () {
+                    // console.error('failed to copy', err)
                 })
-            console.log(emergencyNumber)
         }
 
-
-    }
-
-
-    // if (e.target.className.includes('copyBtnIcon')) {
-    //     console.log('icon')
-    // }
-
+    };
 
 })
