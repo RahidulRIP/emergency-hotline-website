@@ -9,11 +9,7 @@ getElementId('card-box').addEventListener('click', function (e) {
     // coin related 
     const coinCountValue = Number(getElementId('coinCount').innerText);
 
-    if (coinCountValue < 20) {
 
-        return alert('Insufficient Coin');
-
-    };
 
     // love count 
     if (e.target.className.includes('love')) {
@@ -23,7 +19,7 @@ getElementId('card-box').addEventListener('click', function (e) {
         getElementId('love-count').innerText = currentValue;
     };
 
-    // call Btn related work 
+    // calling Btn related work 
     if (e.target.className.includes('callBtn')) {
 
         // time format start 
@@ -41,17 +37,24 @@ getElementId('card-box').addEventListener('click', function (e) {
         // this is for clicking in the call icon 
         const icon = e.target;
         if (icon.tagName == "I") {
-            const heading = icon.parentNode.parentNode.parentNode.children[1].innerText;
-            const callNumber = icon.parentNode.parentNode.parentNode.children[3].innerText;
 
-            // coin related 
-            const remainingCoin = Number(coinCountValue - 20)
-            getElementId('coinCount').innerText = remainingCoin;
+            if (coinCountValue < 20) {
 
-            // info add to the history 
-            const asideContainer = getElementId('asideContainer')
-            const div = document.createElement('div')
-            div.innerHTML = `
+                return alert('Insufficient Coin');
+
+            } else {
+
+                // coin related 
+                const remainingCoin = Number(coinCountValue - 20)
+                getElementId('coinCount').innerText = remainingCoin;
+
+                const heading = icon.parentNode.parentNode.parentNode.children[1].innerText;
+                const callNumber = icon.parentNode.parentNode.parentNode.children[3].innerText;
+
+                // info add to the history 
+                const asideContainer = getElementId('asideContainer')
+                const div = document.createElement('div')
+                div.innerHTML = `
                    <div>
                           <div class="flex items-center justify-between bg-[#fafafa] p-3 rounded-lg mb-2">
                                 <div>
@@ -64,25 +67,35 @@ getElementId('card-box').addEventListener('click', function (e) {
                             </div>
                      </div>
             `
-            asideContainer.append(div);
+                asideContainer.append(div);
+
+                alert(`Emergency-Service : ${heading} ${callNumber}...`)
+            };
+
+
         } else {                                                          // this is for clicking in the calling button 
 
-            // coin related 
-            const remainingCoin = Number(coinCountValue - 20)
-            getElementId('coinCount').innerText = remainingCoin;
+            if (coinCountValue < 20) {
 
-            // call Btn Traverse start 
-            const traverseHeading = e.target.parentNode.parentNode.children[1];
-            const heading = traverseHeading.innerText;
+                return alert('Insufficient Coin');
 
-            const traverseCallNumber = e.target.parentNode.parentNode.children[3];
-            const callNumber = traverseCallNumber.innerText;
-            // call btn Traverse end 
+            } else {
+                // coin related 
+                const remainingCoin = Number(coinCountValue - 20)
+                getElementId('coinCount').innerText = remainingCoin;
 
-            // info add to the history 
-            const asideContainer = getElementId('asideContainer')
-            const div = document.createElement('div')
-            div.innerHTML = `
+                // call Btn Traverse start 
+                const traverseHeading = e.target.parentNode.parentNode.children[1];
+                const heading = traverseHeading.innerText;
+
+                const traverseCallNumber = e.target.parentNode.parentNode.children[3];
+                const callNumber = traverseCallNumber.innerText;
+                // call btn Traverse end 
+
+                // info add to the history 
+                const asideContainer = getElementId('asideContainer')
+                const div = document.createElement('div')
+                div.innerHTML = `
                    <div>
                           <div class="flex items-center justify-between bg-[#fafafa] p-3 rounded-lg mb-2">
                                 <div>
@@ -95,7 +108,14 @@ getElementId('card-box').addEventListener('click', function (e) {
                             </div>
                      </div>
             `
-            asideContainer.append(div);
+                asideContainer.append(div);
+
+                alert(`Emergency-Service : ${heading} ${callNumber}...`)
+            }
+
+
+
+
         };
 
     };
@@ -105,5 +125,53 @@ getElementId('card-box').addEventListener('click', function (e) {
         const asideContainerClear = getElementId('asideContainer')
         asideContainerClear.innerText = ''
     });
+
+    // copy related work 
+
+    if (e.target.className.includes('copyBtn')) {
+
+        // this is for copy  the calling number by clicking in button icon
+        const icon = e.target
+        if (icon.tagName == "I") {
+            console.log('IIIIIII')
+            const copyValue = Number(getElementId('copyValue').innerText);
+            const currentValue = Number(copyValue + 1);
+            getElementId('copyValue').innerText = currentValue;
+            const emergencyNumber = Number(e.target.parentNode.parentNode.parentNode.children[3].innerText);
+
+            navigator.clipboard.writeText(emergencyNumber)
+                .then(function () {
+                    alert(`Copied : ${emergencyNumber}`)
+                })
+                .catch(function (err) {
+                    console.error('failed to copy', err)
+                })
+
+        } else {                                // this is for copy  the calling number by clicking in button
+            const copyValue = Number(getElementId('copyValue').innerText);
+            const currentValue = Number(copyValue + 1);
+            getElementId('copyValue').innerText = currentValue;
+            // console.log(copyValue)
+
+            const emergencyNumber = Number(e.target.parentNode.parentNode.children[3].innerText);
+
+            navigator.clipboard.writeText(emergencyNumber)
+                .then(function () {
+                    alert(`Copied : ${emergencyNumber}`)
+                })
+                .catch(function (err) {
+                    console.error('failed to copy', err)
+                })
+            console.log(emergencyNumber)
+        }
+
+
+    }
+
+
+    // if (e.target.className.includes('copyBtnIcon')) {
+    //     console.log('icon')
+    // }
+
 
 })
