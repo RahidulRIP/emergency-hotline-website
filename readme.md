@@ -1,15 +1,15 @@
 ### Answering the following questions clearly:
 
-1. What is the difference between **getElementById, getElementsByClassName, and querySelector / querySelectorAll**?
+#What is the difference between **getElementById, getElementsByClassName, and querySelector / querySelectorAll**?
 
-# getElementById: 'we can gets one element by id'.
-# getElementsByClassName: 'we can get many elements by class using getElementByClassName()'.
-# querySelector: 'we get 1st element from a page by class or id using css rule'.
-# querySelectorAll: 'we get all elements as node list by class using css rule'.
+1. getElementById: 'we can gets one element by id'.
+2. getElementsByClassName: 'we can get many elements by class using getElementByClassName()'.
+3. querySelector: 'we get 1st element from a page by class or id using css rule'.
+4. querySelectorAll: 'we get all elements as node list by class using css rule'.
 
 
 
-2. How do you **create and insert a new element into the DOM**?
+#How do you **create and insert a new element into the DOM**?
 
 const boxContainer = document.getElementById('box');
 const div = document.createElement('div');
@@ -18,24 +18,24 @@ const div = document.createElement('div');
 
 
 
-3. What is **Event Bubbling** and how does it work?
+#What is **Event Bubbling** and how does it work?
 
-# Event Bubbling: 'event bubbling is down to up flow' .
-# it work: 'when we click in a button of a page ,the button clicked then moves upwards through its parent elements like bubble rising in water'.
-
-
-
-4. What is **Event Delegation** in JavaScript? Why is it useful?
-
-# Event Delegation: 'Putting one event listener on a parent element instead of many elements'.
-# Why useful: 'easy to handle very part of page and we avoid looping by this'.
+1. Event Bubbling: 'event bubbling is down to up flow' .
+2. it work: 'when we click in a button of a page ,the button clicked then moves upwards through its parent elements like bubble rising in water'.
 
 
 
-5. What is the difference between **preventDefault() and stopPropagation()** methods?
+#What is **Event Delegation** in JavaScript? Why is it useful?
 
-# preventDefault: 'it helps to prevents reload of a page when we submit data in form'.
-# stopPropagation: 'when we use stopPropagation it helps to stop bubbling  child to parent elements'.
+1. Event Delegation: 'Putting one event listener on a parent element instead of many elements'.
+2. Why useful: 'easy to handle very part of page and we avoid looping by this'.
+
+
+
+#What is the difference between **preventDefault() and stopPropagation()** methods?
+
+1. preventDefault: 'it helps to prevents reload of a page when we submit data in form'.
+2. stopPropagation: 'when we use stopPropagation it helps to stop bubbling  child to parent elements'.
 
 
 -- -- --
